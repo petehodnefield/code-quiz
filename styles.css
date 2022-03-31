@@ -1,0 +1,78 @@
+body {
+    color: white;
+    margin: 0;
+}
+
+h1,h2,h3,h4,h5,h6 {
+    /* color: black; */
+    text-shadow: 1px 1px black;
+}
+p {
+    font-size: 3rem;
+}
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background: pink;
+}
+
+a {
+    text-decoration: none;
+    font-size: 3rem;
+}
+
+.questions-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: dodgerblue;
+    height: 70vh;
+}
+
+.specific-question {
+    display: none;
+    background: grey;
+    /* display: flex; */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 4rem;
+    border: 3px solid white;
+    border-radius: 20px;
+    flex-wrap: nowrap;
+}
+
+.quiz-options {
+    width: 300px;
+    padding: 1rem 2rem;
+    margin-bottom: 1rem;
+    background: purple;
+    color: white;
+    font-size: 1.4rem;
+    border-radius: 20px;
+    border: 3px solid green;
+    outline: none;
+}
+
+.quiz-options:hover {
+    opacity: .8;
+    cursor: pointer;
+}
+
+.active-question {
+    display: flex;
+}
+
+.qustion-one {
+    display: flex;
+    background: grey;
+    /* display: flex; */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 4rem;
+    border: 3px solid white;
+    border-radius: 20px;
+    flex-wrap: nowrap;
+}
