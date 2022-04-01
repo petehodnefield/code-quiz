@@ -8,8 +8,8 @@ var answerButtons = document.getElementById("answer-buttons")
 var highScoreView = document.querySelector(".high-score-view")
 
 var timerEl = document.querySelector(".timer-element")
-var playerScore = 500;
-var timer = 76;
+var playerScore = 1;
+var timer = 5;
 
 var startGame = function() {
     startBtn.classList.add("hide")
@@ -34,7 +34,7 @@ var showQuestion = function(question) {
         if (answer.correct) {
             button.dataset.correct = answer.correct
         }
-        else if (answer.wrong) {
+        else if (answer.correct = false) {
             button.dataset.wrong = answer.wrong
         }
         button.addEventListener("click", chosenAnswer)
@@ -53,7 +53,9 @@ var resetState = function() {
 var chosenAnswer = function(e) {
     var selectedBtn = e.target
     var wrong = selectedBtn.dataset.wrong
-    console.log(wrong)
+    if(wrong) {
+        timer = timer - 5;
+    }
     var correct = selectedBtn.dataset.correct
     setStatusClass(document.body, correct)
     Array.from(answerButtons .children).forEach(button => {
@@ -74,9 +76,15 @@ var endScreen = function() {
         var playerInitials = prompt("You have set the new high score! Please enter your initials")
         highScoreAllTime = playerScore 
         localStorage.setItem("highscore", playerInitials + " " + highScoreAllTime)
+        startBtn.classList.remove("hide")
+        timer = 76;
+
 
     } else if(playerScore <= highScoreAllTime) {
         alert("You have not beaten the high score of " + highScoreAllTime + ". Please try again!")
+        startBtn.classList.remove("hide")
+        timer = 76;
+
     }
  
 }
@@ -102,10 +110,10 @@ var startTimer = function() {
     var timerBegin = setInterval(function() {
         timer--
         if(timer === 0) {
-        clearInterval(interval)
+        clearInterval(timerBegin)
         timerEl.textContent = "done";
-        highscores();
-        }
+        endScreen();
+    }
         else{
             timerEl.textContent = "Timer: " + timer;
             // flashQuestions();
