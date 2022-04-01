@@ -1,5 +1,11 @@
+* {
+    box-sizing: border-box;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
 body {
-    color: white;
+    color: black;
+    padding: 0;
     margin: 0;
 }
 
@@ -10,7 +16,7 @@ h1,h2,h3,h4,h5,h6 {
 p {
     font-size: 3rem;
 }
-.container {
+.header {
     display: flex;
     align-items: center;
     justify-content: space-around;
@@ -22,57 +28,116 @@ a {
     font-size: 3rem;
 }
 
-.questions-container {
+/* container style begin */
+
+
+
+.second-body {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    background: dodgerblue;
-    height: 70vh;
-}
-
-.specific-question {
-    display: none;
-    background: grey;
-    /* display: flex; */
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    padding: 4rem;
-    border: 3px solid white;
-    border-radius: 20px;
-    flex-wrap: nowrap;
+    justify-content: center;
+    background-color:aqua ;
+    padding: 0;
+    margin: 0;
+    width: 100vw;
+    height: 100vh;
 }
 
-.quiz-options {
-    width: 300px;
-    padding: 1rem 2rem;
-    margin-bottom: 1rem;
-    background: purple;
+.correct {
+    background-color: green;
+}
+
+.wrong {
+    background: red;
+}
+
+.container {
+    background-color: yellow;
+    width: 40%;
+    height: 60%;
+    border-radius: 10px;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    box-shadow: 2px 2px 20px 10px black;
+}
+
+.btn-grid {
+    display: grid;
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.btn {
+    background: pink;
+    text-shadow: 1px 1px black;
     color: white;
-    font-size: 1.4rem;
-    border-radius: 20px;
-    border: 3px solid green;
-    outline: none;
+    font-size:1.41rem;
+    border-radius: 10px;
+    padding: .2rem 2rem;
 }
 
-.quiz-options:hover {
+.btn:hover {
     opacity: .8;
-    cursor: pointer;
 }
 
-.active-question {
-    display: flex;
+
+.btn.correct {
+    background-color: green;
+}
+.btn.wrong {
+    background-color: red;
 }
 
-.qustion-one {
+.start-btn {
+    background: aqua;
+}
+
+.next-btn {
+    background: aqua;
+}
+
+.start-btn, .next-btn {
+    padding: .5rem 2rem;
+} 
+
+.controls {
     display: flex;
-    background: grey;
-    /* display: flex; */
-    flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 4rem;
-    border: 3px solid white;
-    border-radius: 20px;
-    flex-wrap: nowrap;
+    flex-direction: column;
 }
+
+
+.hide {
+    display: none;
+}
+/* 
+.question-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.hide {
+    background-color: aqua;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-grid {
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    justify-content: center;
+    align-items: center;
+}
+
+.correct {
+    background-color: bisque;
+} */

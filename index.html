@@ -9,36 +9,28 @@
   </head>
   <body>
     <header>
-      <div class="container">
+      <div class="header">
         <a href="#">View high scores</a>
-        <button class="start-btn">Start Quiz</button>
         <p class="timer-element"></p>
       </div>
-
-      <div class="questions-container">
-        <div class="question-one">
-          <h2>When was JavaScript created?</h2>
-          <button class="quiz-options">1948</button>
-          <button class="quiz-options">2020</button>
-          <button class="quiz-options">2000</button>
-          <button class="quiz-options">1969</button>
+    </header>
+    <section class="second-body">
+      <div class="container">
+        <div id="question-container" class="hide">
+          <div id="question">Question</div>
+          <div id="answer-buttons" class="btn-grid">
+            <button class="btn">Answer 1</button>
+            <button class="btn">Answer 2</button>
+            <button class="btn">Answer 3</button>
+            <button class="btn">Answer 4</button>
+          </div>
         </div>
-        <div class="specific-question question-two">
-          <h2>When was created?</h2>
-          <button class="quiz-options">1948</button>
-          <button class="quiz-options">2020</button>
-          <button class="quiz-options">2000</button>
-          <button class="quiz-options">1969</button>
-        </div>
-        <div class="specific-question question-three">
-          <h2>When JavaScript created?</h2>
-          <button class="quiz-options">1948</button>
-          <button class="quiz-options">2020</button>
-          <button class="quiz-options">2000</button>
-          <button class="quiz-options">1969</button>
+        <div class="controls">
+          <button id="start-btn" class="start-btn btn">Start</button>
+          <button id="next-btn" class="next-btn btn hide">Next</button>
         </div>
       </div>
-    </header>
+    </section>
 
     <script src="./script.js"></script>
   </body>
