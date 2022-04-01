@@ -48,22 +48,47 @@ var resetState = function() {
 var chosenAnswer = function(e) {
     var selectedBtn = e.target
     var correct = selectedBtn.dataset.correct
-    setStatusClass(document.body.correct)
-    Array.from(answerButtons.children)
+    setStatusClass(document.body, correct)
+    Array.from(answerButtons .children).forEach(button => {
+        setStatusClass(button, button.dataset.correct)
+    })
+    if(randomQuestion.length > currentQuestionIndex + 1) {
+        nextBtn.classList.remove("hide")
+    }
+    else {
+        startBtn.innerHTML = "Restart"
+        startBtn.classList.remove("hide")
+    }
 }
 
+var setStatusClass = function(element, correct) {
+    clearStatusClass(element)
+    if (correct) {
+        element.classList.add("correct")
+        playerScore += 10;
+        console.log(playerScore)
+    }
+    else {
+        element.classList.add("wrong")
+    }
+}
+
+var clearStatusClass = function(element) {
+    element.classList.remove("correct")
+    element.classList.remove("wrong")
+}
 
 startBtn.addEventListener("click", startGame)
+nextBtn.addEventListener("click", () => {
+    currentQuestionIndex++
+    nextQuestion()
+})
 
 
 var questionList = [
     {
         question: "When was JavaScript invented?",
         answers: [ 
-            {
-                text: "1995",
-                correct: true 
-            },
             {
                 text: "2020",
                 correct: false
@@ -74,6 +99,52 @@ var questionList = [
             },
             {
                 text: "1999",
+                correct: false
+            },
+            {
+                text: "1995",
+                correct: true 
+            }
+        ]
+    },
+    {
+        question: "How old am I?",
+        answers: [ 
+            {
+                text: "22",
+                correct: true 
+            },
+            {
+                text: "18",
+                correct: false
+            },
+            {
+                text: "48",
+                correct: false
+            },
+            {
+                text: "38",
+                correct: false
+            }
+        ]
+    },
+    {
+        question: "What's my favorite fruit?",
+        answers: [ 
+            {
+                text: "Apples",
+                correct: false 
+            },
+            {
+                text: "Oranges",
+                correct: true
+            },
+            {
+                text: "Bananas",
+                correct: false
+            },
+            {
+                text: "Grapes",
                 correct: false
             }
         ]
