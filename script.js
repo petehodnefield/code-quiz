@@ -8,10 +8,13 @@ var answerButtons = document.getElementById("answer-buttons")
 var highScoreView = document.querySelector(".high-score-view")
 
 var timerEl = document.querySelector(".timer-element")
-var playerScore = 1;
-var timer = 5;
+var playerScore = 2000;
+var timer = 75;
 
+
+// startGame function when user clicks the start button
 var startGame = function() {
+    timer = 75;
     startBtn.classList.add("hide")
     startTimer();
     randomQuestion = questionList.sort(()=> Math.random() - .5)
@@ -20,20 +23,24 @@ var startGame = function() {
     nextQuestion()
 }
 
+// Reset the question and pull from a random question in the array
 var nextQuestion = function() {
     resetState()
     showQuestion(randomQuestion[currentQuestionIndex])
 }
 
+// Display one of the questions from the array
 var showQuestion = function(question) {
     questionEl.innerText = question.question
     question.answers.forEach(answer => {
         var button = document.createElement("button")
         button.innerText = answer.text
         button.classList.add("btn")
+        // Give the correct answer a dataset of "correct"
         if (answer.correct) {
             button.dataset.correct = answer.correct
         }
+        // Give the false answer a dataset of "wrong"
         else if (answer.correct = false) {
             button.dataset.wrong = answer.wrong
         }
@@ -50,41 +57,46 @@ var resetState = function() {
     }
 }
 
+
 var chosenAnswer = function(e) {
     var selectedBtn = e.target
-    var wrong = selectedBtn.dataset.wrong
-    if(wrong) {
-        timer = timer - 5;
-    }
+    
+    // var wrong = selectedBtn.dataset.wrong
+  
     var correct = selectedBtn.dataset.correct
     setStatusClass(document.body, correct)
     Array.from(answerButtons .children).forEach(button => {
         setStatusClass(button, button.dataset.correct)
     })
+    // If there are more questions to be asked, show the next button
     if(randomQuestion.length > currentQuestionIndex + 1) {
         nextBtn.classList.remove("hide")
     }
     
+    // If there are no more questions to be asked, run endGame
     else {
         endScreen()
     }
 }
 
 var endScreen = function() {
+    timerEl.textContent = "done";
+    // Show player how many points they earned
     alert("You have finished with " + playerScore + " points");
+    // If player earns the highscore, they can enter their initials
     if(playerScore > highScoreAllTime) {
         var playerInitials = prompt("You have set the new high score! Please enter your initials")
         highScoreAllTime = playerScore 
         localStorage.setItem("highscore", playerInitials + " " + highScoreAllTime)
+        nextBtn.classList.add("hide")
+        // Show the start button and reset the timer
         startBtn.classList.remove("hide")
-        timer = 76;
 
-
+    // If player DID NOT earn the high score, allow them to reset the game
     } else if(playerScore <= highScoreAllTime) {
         alert("You have not beaten the high score of " + highScoreAllTime + ". Please try again!")
         startBtn.classList.remove("hide")
-        timer = 76;
-
+        nextBtn.classList.add("hide")
     }
  
 }
@@ -92,10 +104,12 @@ var endScreen = function() {
 var setStatusClass = function(element, correct) {
     clearStatusClass(element)
     if (correct) {
+        // Give the correct answer the class of correct
         element.classList.add("correct")
 
     }
     else {
+        // Give incorrect answers the class of wrong
         element.classList.add("wrong")
     }
 }
@@ -107,13 +121,16 @@ var clearStatusClass = function(element) {
 
 
 var startTimer = function() {
+    // Reduce the timer by 1 every second
     var timerBegin = setInterval(function() {
         timer--
+        // If the timer reaches 0...
         if(timer === 0) {
         clearInterval(timerBegin)
         timerEl.textContent = "done";
         endScreen();
     }
+        // If the timer is above 0...
         else{
             timerEl.textContent = "Timer: " + timer;
             // flashQuestions();
@@ -121,6 +138,7 @@ var startTimer = function() {
     }, 1000)
 }
 
+// Display the high score saved in localStorage when the user clicks the link
 var showHighScore = function() {
     window.alert("The current high score is " + localStorage.getItem("highscore") + " points")
 }
@@ -131,7 +149,6 @@ nextBtn.addEventListener("click", () => {
     currentQuestionIndex++
     nextQuestion()
 })
-
 highScoreView.addEventListener("click", showHighScore)
 
 // Question array
@@ -196,6 +213,48 @@ var questionList = [
             {
                 text: "Grapes",
                 correct: false
+            }
+        ]
+    },
+    {
+        question: "Which JavaScript topic makes you cry the hardest?",
+        answers: [ 
+            {
+                text: "localStorage",
+                correct: false 
+            },
+            {
+                text: "Callback functions",
+                correct: false
+            },
+            {
+                text: "Data attributes",
+                correct: true
+            },
+            {
+                text: "For loops",
+                correct: false
+            }
+        ]
+    },
+    {
+        question: "How long does it take to get good at JavaScript?",
+        answers: [ 
+            {
+                text: "6 months",
+                correct: false 
+            },
+            {
+                text: "A lifetime",
+                correct: false
+            },
+            {
+                text: "1 day",
+                correct: false
+            },
+            {
+                text: "1 million years",
+                correct: true
             }
         ]
     }

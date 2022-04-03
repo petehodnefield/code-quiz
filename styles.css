@@ -10,12 +10,13 @@ body {
 }
 
 h1,h2,h3,h4,h5,h6 {
-    /* color: black; */
     text-shadow: 1px 1px black;
 }
 p {
     font-size: 3rem;
 }
+
+/* Header style begin */
 .header {
     display: flex;
     align-items: center;
@@ -27,11 +28,9 @@ a {
     text-decoration: none;
     font-size: 3rem;
 }
+/* Header style end */
 
-/* container style begin */
-
-
-
+/* Container style begin */
 .second-body {
     display: flex;
     flex-direction: column;
@@ -63,9 +62,11 @@ a {
     align-items: center;
     justify-content: center;
     text-align: center;
-    box-shadow: 2px 2px 20px 10px black;
+    box-shadow: 0px 0px 10px 5px black;
 }
 
+
+/* Button style begin */
 .btn-grid {
     display: grid;
     gap: 2rem;
@@ -116,28 +117,4 @@ a {
 .hide {
     display: none;
 }
-/* 
-.question-container {
-    display: flex;
-    flex-direction: column;
-}
-
-.hide {
-    background-color: aqua;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-.btn-grid {
-    display: flex;
-    flex-direction: column;
-    width: 40%;
-    justify-content: center;
-    align-items: center;
-}
-
-.correct {
-    background-color: bisque;
-} */
+/* Button style end */
