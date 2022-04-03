@@ -2,7 +2,7 @@
 
 ## Purpose
 
-A quiz that helps web developers study up on topics they learn in their full-stack web development bootcamp
+A quiz that helps web developers study up on topics they learn in their full-stack web development bootcamp.
 
 ## Made With
 
