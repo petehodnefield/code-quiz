@@ -9,12 +9,12 @@ var highScoreView = document.querySelector(".high-score-view")
 
 var timerEl = document.querySelector(".timer-element")
 var playerScore = 2000;
-var timer = 75;
+var timer = 25;
 
 
 // startGame function when user clicks the start button
 var startGame = function() {
-    timer = 75;
+    timer = 25;
     startBtn.classList.add("hide")
     startTimer();
     randomQuestion = questionList.sort(()=> Math.random() - .5)
@@ -98,7 +98,7 @@ var endScreen = function() {
         startBtn.classList.remove("hide")
         nextBtn.classList.add("hide")
     }
- 
+    alert("Please refresh the page to start over!")
 }
 
 var setStatusClass = function(element, correct) {
